@@ -1,0 +1,39 @@
+<h1> Algoritmo </h1>
+
+<div class="mb-3">
+  <label class="form-label">Instrucciones: Ingresa un texto, en la parte de abajo
+  saldrán las palabras que son aplindromos </label>
+  <textarea id="camp" class="form-control" aria-label="With textarea"></textarea>
+  <button class="btn btn-dark" onclick="verified();">Combrobar</button>
+  <button class="btn btn-dark" onclick="limpiar();">Limpiar</button>
+</div>
+
+<div class="mb-3">
+    <textarea id="result" class="form-control" value="" disabled></textarea>
+</div>
+
+<script>
+
+    function verified() {
+        var i = document.getElementById('camp')
+        var s = i.value.toString()
+        var t = s.split(' ')
+        var f = document.getElementById('result')
+        f.value = ""
+
+        for (let index = 0; index < t.length; index++) {
+            let p = t[index].split("")
+            let pr = p.reverse()
+            p = pr.join("")
+            
+            if (p == t[index]) {
+                f.value += " " + t[index]
+            }
+        }
+    }
+
+    function limpiar() {
+        document.getElementById('camp').value = ""
+    }
+
+</script>

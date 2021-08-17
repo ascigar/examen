@@ -1,0 +1,8 @@
+<%for usr in @aluser do %>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title"> <%= usr.nombre %> </h5>
+            <%= link_to "Editar", edit_user_path(usr), class: "btn btn-dark" %>
+        </div>
+    </div>
+<% end %>

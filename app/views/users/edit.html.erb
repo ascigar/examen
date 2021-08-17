@@ -1,0 +1,72 @@
+<%= form_with(model: @user, class: "", local: true) do |f| %>
+
+    <% f.hidden_field :email %>
+
+    <%= f.label :nombre, "Nombre" %>
+    <%= f.text_field :nombre, class: "form-control", required: true %>
+
+    <%= f.label :rfc, "RFC" %>
+    <%= f.text_field :rfc, class: "form-control", required: true %>
+
+    <%= f.label :direccion, "Dirección" %>
+    <%= f.text_field :direccion, class: "form-control", required: true %>
+    
+    <%= f.label :telefono, "Telefono" %>
+    <%= f.number_field :telefono, class: "form-control", required: true %>
+
+    <%= f.label :website, "Website" %>
+    <%= f.text_field :website, class: "form-control", required: true %>
+
+    <div class="field">
+        <%= f.label :password %>
+        <%= f.text_field :password, class: "form-control", type: "password" %>
+        <div class="invalid-feedback">
+        Ingrese una contraseña. Unicamente caracteres alfanumericos. Minimo 6 caracteres. 
+        </div>
+    </div>
+
+    <div class="field">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" id="confirmpass" placeholder="Password">
+        <div class="invalid-feedback">
+        La contraseña no coincide
+        </div>
+    </div>
+
+    <div class="actions">
+        <%= f.submit "Modificar",class: "hey" %>
+    </div>
+
+<% end %>
+
+<script>
+    document.getElementById('user_password').onkeyup = function () {
+    var l = document.getElementById('user_password')
+    if(l.value.length >= 6){
+      if(/^[a-zA-Z0-9_]*$/.test(l.value.toString())){
+        l.classList.add('is-valid')
+        l.classList.remove('is-invalid')
+      }else{
+        l.classList.add('is-invalid')
+        l.classList.remove('is-valid')
+      }
+    }else{
+      l.classList.add('is-invalid')
+      l.classList.remove('is-valid')
+    }
+  }
+
+  document.getElementById('confirmpass').onkeyup = function () {confirmpass()};
+
+  function confirmpass() {
+    var l = document.getElementById('user_password')
+    var n = document.getElementById('confirmpass')
+    if( l.value != n.value ){
+      n.classList.add('is-invalid')
+      n.classList.remove('is-valid')
+    }else{
+      n.classList.add('is-valid')
+      n.classList.remove('is-invalid')
+    }
+  }
+</script>
